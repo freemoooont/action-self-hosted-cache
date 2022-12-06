@@ -1,0 +1,6 @@
+name: 'Cached node_modules'
+description: 'Get node_modules and webpack cache from _tool'
+author: 'freemooont'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
