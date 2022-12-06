@@ -1,6 +1,11 @@
 name: 'Cached node_modules'
 description: 'Get node_modules and webpack cache from _tool'
 author: 'freemooont'
+inputs:
+  token:
+    description: 'Token to access the repository'
+    required: false
+    default: ${{ github.token }}
 runs:
   using: 'node16'
   main: 'dist/index.js'
