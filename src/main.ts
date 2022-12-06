@@ -7,7 +7,7 @@ async function run(): Promise<void> {
         if(depPath){
             await tc.extractTar(depPath, './');
         } else {
-            await tc.extractTar('../../_tool/deps/0.0.1/node_modules.tar.gz', './');
+            await tc.extractTar('../../_tool/deps/webpack_cache.tar.gz', './');
         }
     }catch ({message}) {
         core.setFailed(message as string);
