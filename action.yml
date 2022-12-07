@@ -2,10 +2,20 @@ name: 'Cached node_modules'
 description: 'Get node_modules and webpack cache from _tool'
 author: 'freemooont'
 inputs:
-  token:
-    description: 'Token to access the repository'
+  key:
+    description: 'An explicit key for versioning the cache'
     required: false
-    default: ${{ github.token }}
+  path:
+    description: 'The file or folder to be cached'
+    required: true
+  update:
+    description: 'Update the cache'
+    required: true
+outputs:
+  cache-hit:
+    description: 'A boolean value to indicate if cache was found and restored'
 runs:
-  using: 'node16'
-  main: 'dist/index.js'
+  using: 'node12'
+  main: 'dist/main/index.js'
+  post: 'dist/post/index.js'
+  post-if: success()
