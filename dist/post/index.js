@@ -4011,6 +4011,7 @@ function post() {
                 process.chdir(targetDir);
                 core.info(`Creating cache archive...`);
                 core.info(process.cwd());
+                core.info(fileName);
                 const { exitCode } = yield (0, tar_1.createTar)(fileName);
                 if (exitCode === 0) {
                     core.info('Tar created');
