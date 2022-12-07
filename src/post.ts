@@ -9,7 +9,8 @@ async function post(): Promise<void> {
     try {
         const { fileName, cacheDir, targetDir, options, cachePath } = await getOptions();
         if (options.update){
-            const isExistCacheDir = await exists(cacheDir)
+            const isExistCacheDir = await exists(cacheDir);
+            core.info(`Cache dir ${cacheDir}`);
             if (!isExistCacheDir) {
                 await mkdirP(cacheDir)
             }

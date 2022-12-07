@@ -4005,6 +4005,7 @@ function post() {
             const { fileName, cacheDir, targetDir, options, cachePath } = yield (0, options_1.getOptions)();
             if (options.update) {
                 const isExistCacheDir = yield (0, io_util_1.exists)(cacheDir);
+                core.info(`Cache dir ${cacheDir}`);
                 if (!isExistCacheDir) {
                     yield (0, io_1.mkdirP)(cacheDir);
                 }
@@ -4194,9 +4195,9 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.createTar = void 0;
 const exec_1 = __nccwpck_require__(514);
-function createTar(filePath) {
+function createTar(fileName) {
     return __awaiter(this, void 0, void 0, function* () {
-        const exitCode = yield (0, exec_1.exec)(`tar -czf ${filePath}.tar.gz`, [], { silent: true });
+        const exitCode = yield (0, exec_1.exec)(`tar -czf ${fileName}.tar.gz ${fileName}`, [], { silent: true });
         return { exitCode };
     });
 }
