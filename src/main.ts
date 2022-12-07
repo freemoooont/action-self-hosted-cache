@@ -7,6 +7,8 @@ async function run(): Promise<void> {
     try{
         const { cachePath, options, targetDir } = await getOptions();
         const isExistCache = await exists(cachePath);
+        core.info('Cache path: ' + cachePath);
+        core.info('Exist cache: ' + isExistCache);
         if(isExistCache){
             await tc.extractTar(cachePath, './');
             core.info(`Restored from cache: ${options.path}`);
