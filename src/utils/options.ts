@@ -14,7 +14,6 @@ type Options = {
         path: string
         update: boolean
     }
-    isTargetDir: boolean
     targetDir: string
     targetPath: string
     fileName: string
@@ -39,7 +38,6 @@ export const getOptions = async (): Promise<Options> => {
         throw new TypeError('path is required but was not provided.')
     }
     const targetPath = path.resolve(CWD, options.path)
-    const isTargetDir = await isDirectory(targetPath)
     const fileName = options.path.split('/').pop();
 
     const cacheDir = path.join(RUNNER_TOOL_CACHE, GITHUB_REPOSITORY, options.key)
@@ -56,7 +54,6 @@ export const getOptions = async (): Promise<Options> => {
         cacheDir,
         cachePath,
         options,
-        isTargetDir,
         targetDir,
         targetPath,
         fileName

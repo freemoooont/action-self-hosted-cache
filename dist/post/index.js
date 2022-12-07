@@ -4136,7 +4136,6 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.getOptions = void 0;
 const path_1 = __importDefault(__nccwpck_require__(17));
 const core = __importStar(__nccwpck_require__(186));
-const io_util_1 = __nccwpck_require__(962);
 const { GITHUB_REPOSITORY, RUNNER_TOOL_CACHE } = process.env;
 const CWD = process.cwd();
 const getOptions = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -4155,7 +4154,6 @@ const getOptions = () => __awaiter(void 0, void 0, void 0, function* () {
         throw new TypeError('path is required but was not provided.');
     }
     const targetPath = path_1.default.resolve(CWD, options.path);
-    const isTargetDir = yield (0, io_util_1.isDirectory)(targetPath);
     const fileName = options.path.split('/').pop();
     const cacheDir = path_1.default.join(RUNNER_TOOL_CACHE, GITHUB_REPOSITORY, options.key);
     const cachePath = path_1.default.join(cacheDir, `${fileName}.tar.gz`);
@@ -4167,7 +4165,6 @@ const getOptions = () => __awaiter(void 0, void 0, void 0, function* () {
         cacheDir,
         cachePath,
         options,
-        isTargetDir,
         targetDir,
         targetPath,
         fileName
