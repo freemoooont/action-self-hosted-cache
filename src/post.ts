@@ -14,6 +14,8 @@ async function post(): Promise<void> {
                 await mkdirP(cacheDir)
             }
             process.chdir(targetDir)
+            core.info(`Creating cache archive...`);
+            core.info(process.cwd());
             const {exitCode} = await createTar(fileName)
             if(exitCode === 0){
                 core.info('Tar created')
