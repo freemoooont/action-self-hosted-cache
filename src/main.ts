@@ -6,11 +6,9 @@ import {exists} from "@actions/io/lib/io-util";
 async function run(): Promise<void> {
     try{
         const { cachePath, options, targetDir } = await getOptions();
-        core.info('Cache path: ' + cachePath);
         const isExistCache = await exists(cachePath);
-        core.info('Exist cache: ' + isExistCache);
         if(isExistCache){
-            await tc.extractTar(cachePath, './');
+            await tc.extractTar(cachePath, targetDir);
             core.info(`Restored from cache: ${options.path}`);
             core.setOutput("cache-hit", "true");
         } else {

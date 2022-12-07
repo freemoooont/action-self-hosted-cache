@@ -6585,11 +6585,9 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const { cachePath, options, targetDir } = yield (0, options_1.getOptions)();
-            core.info('Cache path: ' + cachePath);
             const isExistCache = yield (0, io_util_1.exists)(cachePath);
-            core.info('Exist cache: ' + isExistCache);
             if (isExistCache) {
-                yield tc.extractTar(cachePath, './');
+                yield tc.extractTar(cachePath, targetDir);
                 core.info(`Restored from cache: ${options.path}`);
                 core.setOutput("cache-hit", "true");
             }
